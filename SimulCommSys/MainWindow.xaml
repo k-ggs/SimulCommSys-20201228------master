@@ -32,35 +32,37 @@
                 <Button  FontSize="30"  Grid.Column="3" Content="&#xe633;" Style="{StaticResource Model_BT_Close}" Background="{x:Null}" BorderBrush="{x:Null}" BorderThickness="0" Click="Button_Click" Foreground="#FFE0D8D8" />
             </Grid>
         </Border>
-        <Grid >
+        <Grid x:Name="Grid_mian" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="0.98*"></RowDefinition>
                 <RowDefinition Height="280"></RowDefinition>
-               
                 <RowDefinition Height="20"></RowDefinition>
+            
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                
                 <ColumnDefinition Width="1*"></ColumnDefinition>
                 <ColumnDefinition Width="500"></ColumnDefinition>
             </Grid.ColumnDefinitions>
+          <!-- <Popup Grid.Column="0" Grid.Row="1" x:Name="popup_menu"  IsOpen="{ Binding open,Mode=TwoWay }" Placement="Center"   >
+            </Popup>
+-->
+            <Border Grid.Column="0" Grid.Row="1" Grid.RowSpan="1"   CornerRadius="10" Margin="3,10,3,3"   BorderBrush="Black" BorderThickness="8">
+                <Frame   x:Name="Frame_chosepage" Visibility="{Binding Visibility,Mode=OneWay}" NavigationUIVisibility="Hidden"   ></Frame>
+            </Border>
 
 
-            <ComboBox   Grid.Column="0" Grid.Row="1" Height="30"   VerticalAlignment="Bottom" Width="200" >
 
-                <ComboBoxItem x:Name="Grop_ContralPram"  HorizontalAlignment="Center"  >
-
-                <Frame x:Name="Frame_chosepage"  NavigationUIVisibility="Hidden"   ></Frame>
-                </ComboBoxItem>
-            </ComboBox>
-
-
-            <Border x:Name="border_camera" Margin="3,10,3,3" Grid.Row="0"  CornerRadius="10"  BorderBrush="Black" BorderThickness="8">
+          
+            <Border x:Name="border_camera" Margin="3,10,3,3" Grid.Row="0" Grid.Column="0" CornerRadius="10"  BorderBrush="Black" >
                 <Grid   >
                  
                         <Grid>
                             <Frame x:Name="Frame_"  NavigationUIVisibility="Hidden"   ></Frame>
-                        </Grid>
+                      
+                            <ToggleButton x:Name="toggle_open"  IsChecked="{Binding open,Mode=TwoWay}" VerticalAlignment="Bottom"   HorizontalAlignment="Center"   Width="150"  Style="{DynamicResource ToggleButtonStyle2}" ></ToggleButton>
+                       
+                    </Grid>
                        
 
                     

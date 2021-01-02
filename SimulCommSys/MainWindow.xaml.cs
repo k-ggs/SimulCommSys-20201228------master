@@ -113,10 +113,43 @@ namespace SimulCommSys
 
 
 
-          
-         
+            this.toggle_open.DataContext = globalvariabel.NotificationObject;
+            this.Frame_chosepage.DataContext = globalvariabel.NotificationObject;
+            globalvariabel.NotificationObject.OPNN += NotificationObject_OPNN;
 
         }
+
+        private void NotificationObject_OPNN()
+        {
+            var row = 0;
+
+
+            var max_row = this.Grid_mian.RowDefinitions.Count();
+
+
+
+            if (Grid.GetRowSpan(this.border_camera) < 2)
+            {
+                Grid.SetRow(this.border_camera, 0);
+
+                Grid.SetRowSpan(this.border_camera, 2);
+
+                Panel.SetZIndex(this.border_camera, 2);
+            }
+            else
+            {
+                Grid.SetRow(this.border_camera, row);
+
+                Grid.SetRowSpan(this.border_camera, 1);
+
+
+                Panel.SetZIndex(this.border_camera, 1);
+
+
+            }
+
+        }
+
         public delegate void close_re();
         /// <summary>
         /// 窗口关闭事件
@@ -424,10 +457,36 @@ namespace SimulCommSys
             }
         }
 
-     
+        private void toggle_open_Checked(object sender, RoutedEventArgs e)
+        {
+         
+            var row = 0;
 
-       
+          
+            var max_row = this.Grid_mian.RowDefinitions.Count();
 
-    
+
+
+            if (Grid.GetRowSpan(this.border_camera) < max_row)
+            {
+                Grid.SetRow(this.border_camera, 0);
+              
+                Grid.SetRowSpan(this.border_camera, 2);
+             
+                Panel.SetZIndex(this.border_camera, 2);
+            }
+            else
+            {
+                Grid.SetRow(this.border_camera, row);
+             
+                Grid.SetRowSpan(this.border_camera, 1);
+             
+
+                Panel.SetZIndex(this.border_camera, 1);
+
+
+            }
+           
+        }
     }
 }

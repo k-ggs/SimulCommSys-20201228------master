@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Media.Imaging;
 
 namespace SimulCommSys
@@ -18,6 +19,9 @@ namespace SimulCommSys
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
+
+        public delegate void OPN();
+        public event OPN OPNN;
         public void RaisePropertyChanged(string propertyName)
         {
 
@@ -69,6 +73,51 @@ namespace SimulCommSys
 
 
         public static String CAMERA_LITTER= "193300025";
+
+
+
+        private bool _open = true;
+        public bool open
+        {
+            get { return this._open; }
+            set { this._open = value;
+
+                switch (value)
+                {
+                    case true:
+                        this.Visibility = Visibility.Visible;
+                        break;
+
+                    case false:
+                        this.Visibility = Visibility.Collapsed;
+                        break;
+                    default:
+                        this.Visibility = Visibility.Visible;
+                        break;
+                }
+                OPNN();
+                RaisePropertyChanged("open");
+            }
+        }
+        private Visibility _Visibility;
+        public Visibility Visibility
+        {
+            get
+            {
+                return this._Visibility;
+            }
+
+            set {
+
+                this._Visibility = value;
+                RaisePropertyChanged("Visibility");
+
+        
+
+              
+               
+            }
+        }
     }
 
 

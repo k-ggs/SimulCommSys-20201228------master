@@ -10,7 +10,7 @@
     <Page.Resources>
        
     </Page.Resources>
-    <Grid   >
+    <Grid   Background="White" >
         <Grid.ColumnDefinitions>
 
             <ColumnDefinition Width="1*"></ColumnDefinition>
@@ -23,10 +23,10 @@
                     <Grid  x:Name="Grid_" >
 
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="0.3*"></RowDefinition>
-                            <RowDefinition Height="0.3*"></RowDefinition>
+                            <RowDefinition Height="0.4*"></RowDefinition>
+                            <RowDefinition Height="0.4*"></RowDefinition>
+                         
 
-                            
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="0.5*"></ColumnDefinition>
@@ -151,8 +151,7 @@
               
                    
                         </Border>
-
-
+                      
                     </Grid>
                 </Grid>
             </Grid>
