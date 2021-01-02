@@ -1,0 +1,30 @@
+﻿ <Grid Background="{StaticResource backg_huibai}" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="0.3*"></RowDefinition>
+                                <RowDefinition Height="0.3*"></RowDefinition>
+
+                                <RowDefinition Height="0.3*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                                <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                        
+                            <Border Grid.Row="0" Grid.Column="0"  Margin="3,3,3,3" BorderBrush="#FFC5C2C2" BorderThickness="4">
+                                <Image x:Name="img1_litterlgt"    Source="{Binding BtmpImg}"/>
+                            </Border>
+                            <Border Grid.Row="1" Grid.Column="0"  Margin="3,3,3,3" BorderBrush="#FFC5C2C2" BorderThickness="4">
+                                <Grid>
+                                <Image  x:Name="img2_redlgt"  Source="{Binding BtmpImg}" />
+                                    <TextBox Text="&#xe6bc;" Foreground="White" FontSize="30" Panel.ZIndex="1"  HorizontalAlignment="Right" VerticalAlignment="Bottom" Style="{StaticResource iconfont}" MouseEnter="TextBox_MouseEnter"></TextBox>
+                                </Grid>
+                            </Border>
+                            <Border Grid.Row="2" Grid.Column="0"  Margin="3,3,3,3" BorderBrush="#FFC5C2C2" BorderThickness="4" Background="Black">
+                                <Image x:Name="img3_normallgt"  Source="{Binding BtmpImg}"/>
+                            </Border>
+
+
+                            <Border Grid.Row="1" Grid.Column="1"  Margin="3,3,3,3" BorderBrush="#FFC5C2C2" BorderThickness="4" Background="Black">
+                                <Image x:Name="img4_bing"   Source="{Binding BtmpImg}"/>
+                            </Border>
+                        </Grid>

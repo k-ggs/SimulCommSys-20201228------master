@@ -1,0 +1,816 @@
+﻿<Page x:Class="SimulCommSys.Chosepag"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SimulCommSys"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="1300"
+     xmlns:Xceed="http://schemas.xceed.com/wpf/xaml/toolkit"
+      Title="Chosepag" Foreground="White" Loaded="Page_Loaded">
+
+    <Grid Background="#FF111111" >
+        <Grid.ColumnDefinitions >
+            <ColumnDefinition Width="190"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <ListBox Background="#FF111111" Foreground="White" Grid.Column="0">
+            <ListBoxItem x:Name="list_model" Content="模型控制 " Selected="list_model_Selected" >
+              
+            </ListBoxItem>
+            <ListBoxItem x:Name="list_car" Content="小车/飞行器控制" Selected="list_car_Selected"></ListBoxItem>
+            <ListBoxItem x:Name="infrared" Content="相机设置" Selected="list_carmaer_Selected"></ListBoxItem>
+        </ListBox>
+        <Grid  Grid.Column="1" Background="#FFA4A4A3">
+            <Grid x:Name="grid_mod" Panel.ZIndex="4" >
+                <ScrollViewer x:Name="scroll_model"   HorizontalScrollBarVisibility="Auto"  VerticalScrollBarVisibility="Auto" >
+                    <StackPanel Orientation="Horizontal"  >
+                        <GroupBox  Header="人/&#xe68c;"   >
+                            <Grid x:Name="GrdBoxModel_People"  >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="0.3*">
+
+                                    </RowDefinition>
+                                    <RowDefinition Height="0.6*"></RowDefinition>
+                                    <RowDefinition Height="0.1*"></RowDefinition>
+                                  
+                                </Grid.RowDefinitions>
+                                <Canvas Grid.Row="0" Margin="5,6,5,5" Height="60" VerticalAlignment="Top">
+                                    <TextBlock Text="运动速度:" Canvas.Left="3" Canvas.Top="3" />
+                                    <Slider x:Name="Preson_Slider"  Width="100" IsSnapToTickEnabled="True"  Value= "{Binding sp_flt,Mode=TwoWay}" Maximum="{Binding maxmum}" Minimum="{Binding minmum}"  LargeChange="{Binding increment}" SmallChange="{Binding increment}" TickFrequency="{Binding increment}" TickPlacement="BottomRight"   Canvas.Left="3"   Canvas.Top="20"  />
+                                    <Xceed:SingleUpDown x:Name="Preson_TextBox" Value="{Binding sp_flt,Mode=TwoWay}" Maximum="{Binding maxmum}" Minimum="{Binding minmum}" Increment="{Binding increment}" Canvas.Right="10" Canvas.Top="20" Width="50" Height="20"  />
+
+                                </Canvas>
+
+                                <Grid  Grid.Row="1">
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.4*"></ColumnDefinition>
+                                        <ColumnDefinition Width="1*"></ColumnDefinition>
+
+                                    </Grid.ColumnDefinitions>
+
+
+                                    <Button x:Name="Preson_Back_btstop" Click="Preson_Back_btstop_Click"  Grid.Column="0"    Style="{DynamicResource Model_BT_Stop_Notxt}"    />
+
+
+                                    <Grid Grid.Column="1">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="0.5*"></RowDefinition>
+                                            <RowDefinition Height="0.5*"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Button x:Name="person_forward_bt"  Grid.Row="0" FontSize="40"   Style="{DynamicResource Model_BT_STY_forward}" d:LayoutOverrides="Height" Click="person_forward_bt_Click"  />
+
+
+                                        <Button x:Name="person_Back_bt"  Grid.Row="1"  FontSize="40"    Style="{DynamicResource Model_BT_STY_back}" d:LayoutOverrides="Width" Click="person_Back_bt_Click"   />
+                                    </Grid>
+
+
+
+                                </Grid>
+                                <StackPanel Grid.Row="2" Orientation="Horizontal">
+                                    <CheckBox x:Name="infrared_1"  Content="红外1" Style="{StaticResource toggstyle3_outtxt}" Foreground="#FFEB1D1D" Click="infrared_1_Click" />
+                                    <Xceed:SingleUpDown x:Name="infrared_1_Txt" Value="{Binding temper,Mode=TwoWay}" Maximum="{Binding maxtemper}" Minimum="{Binding mintemper}" Increment="{Binding increment}"  />
+
+                                </StackPanel>
+                            </Grid>
+                        </GroupBox>
+                        <GroupBox Header="线膛炮/&#xe6ab;"   >
+                            <Grid  x:Name="GrdBoxModel_Boreline" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="0.3*">
+
+                                    </RowDefinition>
+                                    <RowDefinition Height="0.6*"></RowDefinition>
+                                    <RowDefinition Height="0.1*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Canvas Grid.Row="0" Margin="5,6,5,5" Height="60" VerticalAlignment="Top">
+                                    <TextBlock Text="运动速度:" Canvas.Left="3" Canvas.Top="3" />
+                                    <Slider x:Name="Bornlin_Slider"  Width="100" IsSnapToTickEnabled="True"  Value= "{Binding sp_flt,Mode=TwoWay}" Maximum="{Binding maxmum}" Minimum="{Binding minmum}"  LargeChange="{Binding increment}" SmallChange="{Binding increment}" TickFrequency="{Binding increment}" TickPlacement="BottomRight"   Canvas.Left="3"   Canvas.Top="20"  />
+                                    <Xceed:SingleUpDown x:Name="Bornlin_TextBox" Value="{Binding sp_flt,Mode=TwoWay}" Maximum="{Binding maxmum}" Minimum="{Binding minmum}" Increment="{Binding increment}" Canvas.Right="10" Canvas.Top="20" Width="50" Height="20"  />
+
+                                </Canvas>
+
+
+                                <Grid  Grid.Row="1">
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.4*"></ColumnDefinition>
+                                        <ColumnDefinition Width="1*"></ColumnDefinition>
+
+                                    </Grid.ColumnDefinitions>
+
+
+                                    <Button x:Name="Bornlin_Back_btstop" Click="Bornlin_Back_btstop_Click" Grid.Column="0"    Content="&#xe632;"   Style="{DynamicResource Model_BT_Stop_Notxt}"    />
+
+
+                                    <Grid Grid.Column="1">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="0.5*"></RowDefinition>
+                                            <RowDefinition Height="0.5*"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Button x:Name="Bornlin_forward_bt" Click="Bornlin_forward_bt_Click" Grid.Row="0" FontSize="40"   Style="{DynamicResource Model_BT_STY_forward}" d:LayoutOverrides="Height"  />
+
+
+                                        <Button x:Name="Bornlin_Back_bt" Click="Bornlin_Back_bt_Click"  Grid.Row="1"  FontSize="40"     Style="{DynamicResource Model_BT_STY_back}" d:LayoutOverrides="Width"   />
+                                    </Grid>
+
+
+
+                                </Grid>
+                                <StackPanel Grid.Row="2" Orientation="Horizontal">
+                                    <CheckBox x:Name="infrared_2" HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Column="1" Content="红外2" Style="{StaticResource toggstyle3_outtxt}" Foreground="#FFEB1D1D" Click="infrared_2_Click"/>
+                                    <Xceed:SingleUpDown x:Name="infrared_2_Txt" Value="{Binding temper,Mode=TwoWay}" Maximum="{Binding maxtemper}" Minimum="{Binding mintemper}" Increment="{Binding increment}" Grid.Column="1" Grid.Row="1"/>
+                                </StackPanel>
+                            </Grid>
+                        </GroupBox>
+                        <GroupBox  Header="火箭炮/&#xe6aa;" >
+                            <Grid x:Name="GrdBoxModel_rocketgun" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="0.3*">
+
+                                    </RowDefinition>
+                                    <RowDefinition Height="0.6*"></RowDefinition>
+                                    <RowDefinition Height="0.1*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Canvas Grid.Row="0" Margin="5,6,5,5" Height="60" VerticalAlignment="Top">
+                                    <TextBlock Text="运动速度:" Canvas.Left="3" Canvas.Top="3" />
+                                    <Slider x:Name="Rockt_Slider"  Width="100" IsSnapToTickEnabled="True"  Value= "{Binding sp_flt,Mode=TwoWay}" Maximum="{Binding maxmum}" Minimum="{Binding minmum}"  LargeChange="{Binding increment}" SmallChange="{Binding increment}" TickFrequency="{Binding increment}" TickPlacement="BottomRight"   Canvas.Left="3"   Canvas.Top="20"  />
+                                    <Xceed:SingleUpDown x:Name="Rockt_TextBox" Value="{Binding sp_flt,Mode=TwoWay}" Maximum="{Binding maxmum}" Minimum="{Binding minmum}" Increment="{Binding increment}" Canvas.Right="10" Canvas.Top="20" Width="50" Height="20"  />
+
+                                </Canvas>
+
+                                <Grid Grid.Row="1">
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.4*"></ColumnDefinition>
+                                        <ColumnDefinition Width="1*"></ColumnDefinition>
+
+                                    </Grid.ColumnDefinitions>
+
+
+                                    <Button x:Name="Rockt_Back_btstop" Click="Rockt_Back_btstop_Click"  Grid.Column="0"    Content="&#xe632;"   Style="{DynamicResource Model_BT_Stop_Notxt}"    />
+
+
+                                    <Grid Grid.Column="1">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="0.5*"></RowDefinition>
+                                            <RowDefinition Height="0.5*"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Button x:Name="Rockt_forward_bt" Click="Rockt_forward_bt_Click" Grid.Row="0" FontSize="40"     Style="{DynamicResource Model_BT_STY_forward}" d:LayoutOverrides="Height"  />
+
+
+                                        <Button x:Name="Rockt_Back_bt" Click="Rockt_Back_bt_Click"  Grid.Row="1"  FontSize="40"     Style="{DynamicResource Model_BT_STY_back}" d:LayoutOverrides="Width"   />
+                                    </Grid>
+
+
+
+                                </Grid>
+                                <StackPanel Grid.Row="2" Orientation="Horizontal">
+                                    <CheckBox x:Name="infrared_3" HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Column="1" Content="红外3" Style="{StaticResource toggstyle3_outtxt}" Foreground="#FFEB1D1D" Click="infrared_3_Click"/>
+                                    <Xceed:SingleUpDown x:Name="infrared_3_Txt" Value="{Binding temper,Mode=TwoWay}" Maximum="{Binding maxtemper}" Minimum="{Binding mintemper}" Increment="{Binding increment}" Grid.Column="1" Grid.Row="1"/>
+                                </StackPanel>
+                            </Grid>
+                        </GroupBox>
+
+                        <GroupBox  Header="坦克/&#xe6c3;"  >
+                            <Grid x:Name="GrdBoxModel_tank" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="0.3*">
+
+                                    </RowDefinition>
+                                    <RowDefinition Height="0.6*"></RowDefinition>
+                                    <RowDefinition Height="0.1*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Canvas Grid.Row="0" Margin="5,6,5,5" Height="60" VerticalAlignment="Top">
+                                    <TextBlock Text="运动速度:" Canvas.Left="3" Canvas.Top="3" />
+                                    <Slider x:Name="Tank_Slider"  Width="100" IsSnapToTickEnabled="True"  Value= "{Binding sp_flt,Mode=TwoWay}" Maximum="{Binding maxmum}" Minimum="{Binding minmum}"  LargeChange="{Binding increment}" SmallChange="{Binding increment}" TickFrequency="{Binding increment}" TickPlacement="BottomRight"   Canvas.Left="3"   Canvas.Top="20"  />
+                                    <Xceed:SingleUpDown x:Name="Tank_TextBox" Value="{Binding sp_flt,Mode=TwoWay}" Maximum="{Binding maxmum}" Minimum="{Binding minmum}" Increment="{Binding increment}" Canvas.Right="10" Canvas.Top="20" Width="50" Height="20"  />
+
+                                </Canvas>
+
+                                <Grid Grid.Row="1">
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.4*"></ColumnDefinition>
+                                        <ColumnDefinition Width="1*"></ColumnDefinition>
+
+                                    </Grid.ColumnDefinitions>
+
+
+                                    <Button x:Name="Tank_Back_btstop"  Click="Tank_Back_btstop_Click" Grid.Column="0"     Style="{DynamicResource Model_BT_Stop_Notxt}"    />
+
+
+                                    <Grid Grid.Column="1">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="0.5*"></RowDefinition>
+                                            <RowDefinition Height="0.5*"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Button x:Name="Tank_forward_bt" Click="Tank_forward_bt_Click" Grid.Row="0" FontSize="40"   Style="{DynamicResource Model_BT_STY_forward}" d:LayoutOverrides="Height"  />
+
+
+                                        <Button x:Name="Tank_Back_bt" Click="Tank_Back_bt_Click" Grid.Row="1"  FontSize="40"   Style="{DynamicResource Model_BT_STY_back}" d:LayoutOverrides="Width"   />
+                                    </Grid>
+
+
+
+                                </Grid>
+                                <StackPanel Grid.Row="2" Orientation="Horizontal">
+                                    <CheckBox x:Name="infrared_4" HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Column="1" Content="红外4" Style="{StaticResource toggstyle3_outtxt}" Foreground="#FFEB1D1D" Click="infrared_4_Click"/>
+                                    <Xceed:SingleUpDown x:Name="infrared_4_Txt" Value="{Binding temper,Mode=TwoWay}" Maximum="{Binding maxtemper}" Minimum="{Binding mintemper}" Increment="{Binding increment}" />
+                                </StackPanel>
+                            </Grid>
+                        </GroupBox>
+
+                        <GroupBox  Header="运输车/&#xe6a0;"  >
+                            <Grid x:Name="GrdBoxModel_CarryCar" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="0.3*">
+
+                                    </RowDefinition>
+                                    <RowDefinition Height="0.6*"></RowDefinition>
+                                    <RowDefinition Height="0.1*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Canvas Grid.Row="0" Margin="5,6,5,5" Height="60" VerticalAlignment="Top">
+                                    <TextBlock Text="运动速度:" Canvas.Left="3" Canvas.Top="3" />
+                                    <Slider x:Name="Carry_Slider" IsSnapToTickEnabled="True"  Width="100"  Value= "{Binding sp_flt,Mode=TwoWay}" Maximum="{Binding maxmum}" Minimum="{Binding minmum}"  LargeChange="{Binding increment}" SmallChange="{Binding increment}" TickFrequency="{Binding increment}" TickPlacement="BottomRight"   Canvas.Left="3"   Canvas.Top="20"  />
+                                    <Xceed:SingleUpDown x:Name="Carry_TextBox" Value="{Binding sp_flt,Mode=TwoWay}" Maximum="{Binding maxmum}" Minimum="{Binding minmum}" Increment="{Binding increment}" Canvas.Right="10" Canvas.Top="20" Width="50" Height="20"  />
+
+                                </Canvas>
+
+                                <Grid Grid.Row="1">
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.4*"></ColumnDefinition>
+                                        <ColumnDefinition Width="1*"></ColumnDefinition>
+
+                                    </Grid.ColumnDefinitions>
+
+
+                                    <Button x:Name="Carry_Back_btstop" Click="Carry_Back_btstop_Click"  Grid.Column="0"       Style="{DynamicResource Model_BT_Stop_Notxt}"    />
+
+
+                                    <Grid Grid.Column="1">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="0.5*"></RowDefinition>
+                                            <RowDefinition Height="0.5*"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Button x:Name="Carry_forward_bt" Click="Carry_forward_bt_Click" Grid.Row="0" FontSize="40"     Style="{DynamicResource Model_BT_STY_forward}" d:LayoutOverrides="Height"  />
+
+
+                                        <Button x:Name="Carryk_Back_bt" Click="Carryk_Back_bt_Click"  Grid.Row="1"  FontSize="40"    Style="{DynamicResource Model_BT_STY_back}" d:LayoutOverrides="Width"   />
+                                    </Grid>
+
+
+
+                                </Grid>
+                                <StackPanel Grid.Row="2" Orientation="Horizontal">
+                                    <CheckBox x:Name="infrared_5" HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Column="1" Content="红外4" Style="{StaticResource toggstyle3_outtxt}" Foreground="#FFEB1D1D" />
+                                    <Xceed:SingleUpDown x:Name="infrared_5_Txt" Value="{Binding temper,Mode=TwoWay}" Maximum="{Binding maxtemper}" Minimum="{Binding mintemper}" Increment="{Binding increment}" />
+                                </StackPanel>
+                            </Grid>
+                        </GroupBox>
+                    </StackPanel>
+                </ScrollViewer>
+
+            </Grid>
+            <Grid x:Name="grid_car"  Panel.ZIndex="1">
+                <ScrollViewer x:Name="scroll_car"     HorizontalScrollBarVisibility="Auto"  VerticalScrollBarVisibility="Auto" >
+                    <StackPanel Orientation="Horizontal">
+
+                        <GroupBox    x:Name="GroupBoxCar_SeeLight" Header="可见光小车/&#xe67c;"  >
+                            <Grid x:Name="GRdSEE_lgt" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="0.4*">
+
+                                    </RowDefinition>
+                                    <RowDefinition Height="0.6*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0"   >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="0.6*"></RowDefinition>
+                                        <RowDefinition Height="0.4*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+
+                                    <Canvas Grid.Row="0" >
+
+
+
+
+
+                                        <TextBlock  Text="运动速度:" Canvas.Right="1"  Canvas.Left="4" Canvas.Top="3" FontFamily="iconfont"/>
+                                        <Slider IsSnapToTickEnabled="True" Width="100" Canvas.Left="15"  Canvas.Top="20" x:Name="SeeLgtcar_Slider" Value= "{Binding sp_flt,Mode=TwoWay}" Maximum="{Binding maxmum}" Minimum="{Binding minmum}"  LargeChange="{Binding increment}" SmallChange="{Binding increment}" TickFrequency="{Binding increment}"    TickPlacement="BottomRight"   />
+                                        <Xceed:SingleUpDown x:Name="SeeLgtcar_SingleUpDown"  Value="{Binding sp_flt,Mode=TwoWay}" Maximum="{Binding maxmum}" Minimum="{Binding minmum}" Increment="{Binding increment}" Canvas.Right="1" Canvas.Top="18" Width="50" Height="20" />
+                                    </Canvas>
+                                    <Grid Grid.Row="1">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                            <ColumnDefinition Width="0.1*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Button x:Name="SeeLgt_forbacstp" Click="SeeLgt_forbacstp_Click"   Grid.Column="0"      Style="{StaticResource Model_BT_Stop_Notxt}"/>
+                                        <Button  x:Name="SeeLgt_forward" Click="SeeLgt_forward_Click" Grid.Column="1"   Style="{StaticResource Model_BT_STY_forward}"   />
+                                        <Button  x:Name="SeeLgt_Back" Click="SeeLgt_Back_Click"  Grid.Column="2"    Style="{StaticResource Model_BT_STY_back}" />
+                                        <TextBox x:Name="SeeLgt_forbacTxt" Text="{Binding speed}"  VerticalAlignment="Center" Margin="2,4,2,4" Grid.Column="3" />
+                                    </Grid>
+                                </Grid>
+
+                                <Grid  Grid.Row="1">
+                                    <Grid.RowDefinitions>
+
+                                        <RowDefinition Height="0.3*"></RowDefinition>
+                                        <RowDefinition Height="0.3*"></RowDefinition>
+                                        <RowDefinition Height="0.3*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                        <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                        <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                        <ColumnDefinition Width="0.1*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+
+
+                                    <Button x:Name="SeeLgt_RightRevolvestp" Click="SeeLgt_RightRevolvestp_Click"    Grid.Column="0"    Grid.Row="0"  Foreground="White" Style="{StaticResource Model_BT_Stop_Notxt}"/>
+                                    <Button x:Name="SeeLgt_LeftRevolve"  Click="SeeLgt_LeftRevolve_Click"   Grid.Column="1"  Grid.Row="0"  Style="{StaticResource Model_BT_STY_leftRound}" >
+
+                                    </Button>
+                                    <Button x:Name="SeeLgt_RightRevolve" Click="SeeLgt_RightRevolve_Click"    Grid.Column="2"  Grid.Row="0"  Style="{StaticResource Model_BT_STY_rightRound}" >
+
+                                    </Button>
+                                    <TextBox x:Name="SeeLgt_RigLefTxt"  VerticalAlignment="Center" Margin="2,4,2,4" Grid.Column="3" Grid.Row="0" FontFamily="iconfont"/>
+
+                                    <Button  x:Name="SeeLgt_upstp" Click="SeeLgt_upstp_Click"  Grid.Column="0"    Grid.Row="1"  Style="{StaticResource Model_BT_Stop_Notxt}"/>
+                                    <Button x:Name="SeeLgt_up" Click="SeeLgt_up_Click"   Grid.Column="1"   Grid.Row="1"  Style="{StaticResource Model_BT_STY_up}" />
+                                    <Button x:Name="SeeLgt_down" Click="SeeLgt_down_Click"   Grid.Column="2"  Grid.Row="1"  Style="{StaticResource Model_BT_STY_down}" />
+                                    <TextBox x:Name="SeeLgt_updowTxt" VerticalAlignment="Center" Margin="2,4,2,4" Grid.Column="3" Grid.Row="1"/>
+
+                                    <Button x:Name="SeeLgt_Look_downstp" Click="SeeLgt_Look_downstp_Click"  Grid.Column="0"    Grid.Row="2"  Foreground="White" Style="{StaticResource Model_BT_Stop_Notxt}"/>
+                                    <Button x:Name="SeeLgt_Look_down" Click="SeeLgt_Look_down_Click"   Grid.Column="1" Grid.Row="2"  Style="{StaticResource Model_BT_STY_lookdwn}" RenderTransformOrigin="0.5,0.5" >
+
+                                    </Button>
+                                    <Button  x:Name="SeeLgt_Look_up" Click="SeeLgt_Look_up_Click"    Grid.Column="2"  Grid.Row="2"  Style="{StaticResource Model_BT_STY_lookup}" RenderTransformOrigin="0.5,0.5" >
+
+                                    </Button>
+                                    <TextBox x:Name="Seelgt_looupdwnTxt" VerticalAlignment="Center" Margin="2,4,2,4" Grid.Column="3" Grid.Row="2" FontFamily="iconfont"/>
+
+
+                                </Grid>
+
+                            </Grid>
+                        </GroupBox>
+                        <GroupBox     x:Name="GroupBoxCar_LitterLight" Header="微光小车/&#xe67c;"   >
+                            <Grid x:Name="GRdLitterLight">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="0.4*">
+
+                                    </RowDefinition>
+                                    <RowDefinition Height="0.6*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0"  >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="0.6*"></RowDefinition>
+                                        <RowDefinition Height="0.4*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+
+                                    <Canvas Grid.Row="0" Margin="0,0,0,3" >
+
+
+
+
+
+                                        <TextBlock Text="运动速度:"  Canvas.Right="1"  Canvas.Left="4" Canvas.Top="3" FontFamily="iconfont"/>
+                                        <Slider IsSnapToTickEnabled="True" Width="100" Canvas.Left="15"  Canvas.Top="20" x:Name="LitterLightcar_Slider" Value= "{Binding sp_flt,Mode=TwoWay}" Maximum="{Binding maxmum}" Minimum="{Binding minmum}"  LargeChange="{Binding increment}" SmallChange="{Binding increment}" TickFrequency="{Binding increment}"    TickPlacement="BottomRight"   />
+                                        <Xceed:SingleUpDown x:Name="LitterLightcar_SingleUpDown"  Value="{Binding sp_flt,Mode=TwoWay}" Maximum="{Binding maxmum}" Minimum="{Binding minmum}" Increment="{Binding increment}" Canvas.Right="1" Canvas.Top="18" Width="50" Height="20" />
+                                    </Canvas>
+                                    <Grid Grid.Row="1">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                            <ColumnDefinition Width="0.1*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Button  x:Name="LitterLight_forwardstp"  Click="LitterLight_forwardstp_Click"  Grid.Column="0"      Style="{StaticResource Model_BT_Stop_Notxt}"/>
+                                        <Button  x:Name="LitterLight_forward" Click="LitterLight_forward_Click"  Grid.Column="1"  Style="{StaticResource Model_BT_STY_forward}"   />
+                                        <Button  x:Name="LitterLight_Back" Click="LitterLight_Back_Click"  Grid.Column="2"  Style="{StaticResource Model_BT_STY_back}" />
+                                        <TextBox x:Name="LitterLight_forbacTxt" Text="{Binding speed}"  VerticalAlignment="Center" Margin="2,4,2,4" Grid.Column="3" />
+                                    </Grid>
+                                </Grid>
+
+                                <Grid  Grid.Row="1" >
+                                    <Grid.RowDefinitions>
+
+                                        <RowDefinition Height="0.3*"></RowDefinition>
+                                        <RowDefinition Height="0.3*"></RowDefinition>
+                                        <RowDefinition Height="0.3*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                        <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                        <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                        <ColumnDefinition Width="0.1*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+
+
+                                    <Button x:Name="LitterLight_RightRevolvestp" Click="LitterLight_RightRevolvestp_Click"  Grid.Column="0"    Grid.Row="0"   Style="{StaticResource Model_BT_Stop_Notxt}"/>
+                                    <Button  x:Name="LitterLight_LeftRevolve" Click="LitterLight_LeftRevolve_Click" Grid.Column="1"   Grid.Row="0"  Style="{StaticResource Model_BT_STY_leftRound}"   >
+
+                                    </Button>
+                                    <Button x:Name="LitterLight_RightRevolve" Click="LitterLight_RightRevolve_Click"    Grid.Column="2" Grid.Row="0"  Style="{StaticResource Model_BT_STY_rightRound}" >
+
+                                    </Button>
+                                    <TextBox x:Name="LitterLight_RigLefTxt"  VerticalAlignment="Center" Margin="2,4,2,4" Grid.Column="3" Grid.Row="0" FontFamily="iconfont"/>
+
+                                    <Button  x:Name="LitterLight_upstp" Click="LitterLight_upstp_Click"   Grid.Column="0"    Grid.Row="1"  Style="{StaticResource Model_BT_Stop_Notxt}"/>
+                                    <Button x:Name="LitterLight_up" Click="LitterLight_up_Click"   Grid.Column="1"  Grid.Row="1"  Style="{StaticResource Model_BT_STY_up}" />
+                                    <Button x:Name="LitterLight_down" Click="LitterLight_down_Click" Grid.Column="2"   Grid.Row="1"  Style="{StaticResource Model_BT_STY_down}" />
+                                    <TextBox x:Name="LitterLight_updowTxt" VerticalAlignment="Center" Margin="2,4,2,4" Grid.Column="3" Grid.Row="1"/>
+
+                                    <Button  x:Name="LitterLight_Look_downstp" Click="LitterLight_Look_downstp_Click"  Grid.Column="0"     Grid.Row="2"  Style="{StaticResource Model_BT_Stop_Notxt}"/>
+                                    <Button x:Name="LitterLight_Look_down" Click="LitterLight_Look_down_Click"   Grid.Column="1"   Grid.Row="2"  Style="{StaticResource Model_BT_STY_lookdwn}"  >
+
+                                    </Button>
+                                    <Button  x:Name="LitterLight_Look_up" Click="LitterLight_Look_up_Click"    Grid.Column="2"  Grid.Row="2"  Style="{StaticResource Model_BT_STY_lookup}"  >
+
+                                    </Button>
+                                    <TextBox x:Name="LitterLight_looupdwnTxt" VerticalAlignment="Center" Margin="2,4,2,4" Grid.Column="3" Grid.Row="2" FontFamily="iconfont"/>
+
+
+                                </Grid>
+
+                            </Grid>
+                        </GroupBox>
+                        <GroupBox   x:Name="GroupBoxCar_RedLight" Header="红外小车/&#xe67c;"    >
+                            <Grid x:Name="GRdRedLightLight">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="0.4*">
+
+                                    </RowDefinition>
+                                    <RowDefinition Height="0.6*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0"  >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="0.6*"></RowDefinition>
+                                        <RowDefinition Height="0.4*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+
+                                    <Canvas Grid.Row="0" Margin="0,0,0,3" >
+
+
+
+
+
+                                        <TextBlock Text="运动速度:"  Canvas.Right="1"  Canvas.Left="4" Canvas.Top="3" />
+                                        <Slider IsSnapToTickEnabled="True" Width="100" Canvas.Left="15"  Canvas.Top="20" x:Name="RedLightcar_Slider" Value= "{Binding sp_flt,Mode=TwoWay}" Maximum="{Binding maxmum}" Minimum="{Binding minmum}"  LargeChange="{Binding increment}" SmallChange="{Binding increment}" TickFrequency="{Binding increment}"    TickPlacement="BottomRight"   />
+                                        <Xceed:SingleUpDown x:Name="RedLightcar_SingleUpDown"  Value="{Binding sp_flt,Mode=TwoWay}" Maximum="{Binding maxmum}" Minimum="{Binding minmum}" Increment="{Binding increment}" Canvas.Right="1" Canvas.Top="18" Width="50" Height="20" />
+                                    </Canvas>
+                                    <Grid Grid.Row="1">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                            <ColumnDefinition Width="0.1*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Button  x:Name="RedLight_forwardstp" Click="RedLight_forwardstp_Click"  Grid.Column="0"     Style="{StaticResource Model_BT_Stop_Notxt}"/>
+                                        <Button  x:Name="RedLight_forward" Click="RedLight_forward_Click" Grid.Column="1"  Style="{StaticResource Model_BT_STY_forward}"   />
+                                        <Button  x:Name="RedLight_Back" Click="RedLight_Back_Click"  Grid.Column="2"   Style="{StaticResource Model_BT_STY_back}" />
+                                        <TextBox x:Name="RedLight_forbacTxt" Text="{Binding speed}"  VerticalAlignment="Center" Margin="2,4,2,4" Grid.Column="3" />
+                                    </Grid>
+                                </Grid>
+                              
+                                    <Grid  Grid.Row="1">
+                                        <Grid.RowDefinitions>
+
+                                            <RowDefinition Height="0.3*"></RowDefinition>
+                                            <RowDefinition Height="0.3*"></RowDefinition>
+                                            <RowDefinition Height="0.3*"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                            <ColumnDefinition Width="0.1*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+
+
+
+                                        <Button x:Name="RedLight_RightRevolvestp" Click="RedLight_RightRevolvestp_Click"  Grid.Column="0"    Grid.Row="0"  Style="{StaticResource Model_BT_Stop_Notxt}"/>
+                                    <Button x:Name="RedLight_LeftRevolve" Click="RedLight_LeftRevolve_Click"   Grid.Column="1"   Grid.Row="0"  Style="{StaticResource Model_BT_STY_leftRound}"   >
+
+                                        </Button>
+                                        <Button x:Name="RedLight_RightRevolve" Click="RedLight_RightRevolve_Click"    Grid.Column="2"  Grid.Row="0"  Style="{StaticResource Model_BT_STY_rightRound}" >
+
+                                        </Button>
+                                        <TextBox x:Name="RedLight_RigLefTxt"  VerticalAlignment="Center" Margin="2,4,2,4" Grid.Column="3" Grid.Row="0" />
+
+                                        <Button  x:Name="RedLight_upstp" Click="RedLight_upstp_Click" Grid.Column="0"    Grid.Row="1"  Style="{StaticResource Model_BT_Stop_Notxt}"/>
+                                        <Button x:Name="RedLight_up" Click="RedLight_up_Click"    Grid.Column="1" Grid.Row="1"  Style="{StaticResource Model_BT_STY_up}" />
+                                        <Button x:Name="RedLight_down" Click="RedLight_down_Click"   Grid.Column="2"   Grid.Row="1"  Style="{StaticResource Model_BT_STY_down}" />
+                                        <TextBox x:Name="RedLight_updowTxt" VerticalAlignment="Center" Margin="2,4,2,4" Grid.Column="3" Grid.Row="1"/>
+
+                                        <Button  x:Name="RedLight_Look_upstp" Click="RedLight_Look_upstp_Click"   Grid.Column="0"    Grid.Row="2"  Style="{StaticResource Model_BT_Stop_Notxt}"/>
+                                        <Button x:Name="RedLight_Look_down" Click="RedLight_Look_down_Click"  Grid.Column="1"   Grid.Row="2"  Style="{StaticResource Model_BT_STY_lookdwn}"  >
+
+                                        </Button>
+                                        <Button  x:Name="RedLight_Look_up" Click="RedLight_Look_up_Click"    Grid.Column="2"  Grid.Row="2"  Style="{StaticResource Model_BT_STY_lookup}" >
+
+
+                                        </Button>
+                                        <TextBox x:Name="RedLight_looupdwnTxt" VerticalAlignment="Center" Margin="2,4,2,4" Grid.Column="3" Grid.Row="2" FontFamily="iconfont"/>
+
+
+                                    </Grid>
+                              
+                            </Grid>
+                        </GroupBox>
+
+                        <GroupBox    x:Name="GroupBoxFly_RedLight" Header="飞行器/&#xe9d7;"  >
+                            <Grid x:Name="GrdFly">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="0.4*">
+
+                                    </RowDefinition>
+                                    <RowDefinition Height="0.6*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Canvas Grid.Row="0"  Margin="0,0,0,3" >
+
+
+
+
+
+                                    <TextBlock Text="运动速度:"  Canvas.Right="1"  Canvas.Left="4" Canvas.Top="3" FontFamily="iconfont"/>
+                                    <Slider IsSnapToTickEnabled="True" Width="100" Canvas.Left="4"  Canvas.Top="20" x:Name="Fly_Slider" Value= "{Binding sp_flt,Mode=TwoWay}" Maximum="{Binding maxmum}" Minimum="{Binding minmum}"  LargeChange="{Binding increment}" SmallChange="{Binding increment}" TickFrequency="{Binding increment}"    TickPlacement="BottomRight"   />
+                                    <Xceed:SingleUpDown x:Name="Fly_SingleUpDown"  Value="{Binding sp_flt,Mode=TwoWay}" Maximum="{Binding maxmum}" Minimum="{Binding minmum}" Increment="{Binding increment}" Canvas.Right="1" Canvas.Top="18" Width="50" Height="20" />
+                                </Canvas>
+                                
+                                    <Grid Grid.Row="1">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="0.3*"></RowDefinition>
+                                            <RowDefinition Height="0.3*"></RowDefinition>
+                                            <RowDefinition Height="0.3*"></RowDefinition>
+                                            <RowDefinition Height="0.3*"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                            <ColumnDefinition Width="0.1*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+
+
+                                        <Button  x:Name="Fly_forwordstp" Click="Fly_forwordstp_Click"   Grid.Column="0"    Grid.Row="0" Style="{StaticResource Model_BT_Stop_Notxt}"/>
+                                        <Button x:Name="Fly_forword" Click="Fly_forword_Click"   Grid.Column="1"  Grid.Row="0"  Style="{StaticResource Model_BT_STY_forward}"  />
+                                        <Button x:Name="Fly_back" Click="Fly_back_Click"   Grid.Column="2"  Grid.Row="0"  Style="{StaticResource Model_BT_STY_back}" />
+                                        <TextBox VerticalAlignment="Center" Margin="2,4,2,4" Grid.Column="3" Grid.Row="0"/>
+
+
+                                        <Button x:Name="Fly_Lookdwnstp" Click="Fly_Lookdwnstp_Click"   Grid.Column="0"    Grid.Row="3"   Style="{StaticResource Model_BT_Stop_Notxt}"/>
+                                        <Button x:Name="Fly_Lookdwn" Click="Fly_Lookdwn_Click" Grid.Column="1"  Grid.Row="3"  Style="{StaticResource Model_BT_STY_lookdwn}"  >
+
+                                        </Button>
+                                        <Button x:Name="Fly_Lookup" Click="Fly_Lookup_Click"     Grid.Column="2"  Grid.Row="3"  Style="{StaticResource Model_BT_STY_lookup}" >
+
+                                        </Button>
+                                        <TextBox VerticalAlignment="Center" Margin="2,4,2,4" Grid.Column="3" Grid.Row="3" FontFamily="iconfont"/>
+
+
+                                    </Grid>
+                               
+                            </Grid>
+                        </GroupBox>
+
+
+                    </StackPanel>
+                </ScrollViewer>
+            </Grid>
+
+            <Grid x:Name="grid_carmer"  Panel.ZIndex="4">
+                <ScrollViewer x:Name="scroll_carmer"     HorizontalScrollBarVisibility="Auto"  VerticalScrollBarVisibility="Auto" >
+                    <StackPanel Orientation="Horizontal">
+
+                        <GroupBox    x:Name="GroupBox_carmer1" Header="可见光相机/&#xe758;"  >
+                            <Grid x:Name="GRdcarmer1" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="0.4*">
+
+                                    </RowDefinition>
+                                    <RowDefinition Height="0.6*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0"   >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="0.6*"></RowDefinition>
+                                        <RowDefinition Height="0.4*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+
+                                    <Grid Grid.Row="0" >
+
+
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="0.2*"></RowDefinition>
+                                            <RowDefinition Height="0.4*"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <TextBox x:Name="camera1_name" Grid.Row="0"></TextBox>
+                                        <CheckBox x:Name="camera1_Open" Grid.Row="1" Style="{StaticResource OrangeSwitchStyle}"></CheckBox>
+
+
+                                    </Grid>
+                                    <Grid Grid.Row="1">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                            <ColumnDefinition Width="0.1*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+
+                                    </Grid>
+                                </Grid>
+
+                                <Grid  Grid.Row="1">
+                                    <Grid.RowDefinitions>
+
+                                        <RowDefinition Height="0.3*"></RowDefinition>
+                                        <RowDefinition Height="0.3*"></RowDefinition>
+                                        <RowDefinition Height="0.3*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                        <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                        <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                        <ColumnDefinition Width="0.1*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+
+
+                                   
+
+                                </Grid>
+
+                            </Grid>
+                        </GroupBox>
+                        <GroupBox     x:Name="GroupBox_carmer2" Header="偏振相机/&#xe758;"   >
+                            <Grid x:Name="GRd_carmer2">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="0.4*">
+                                      
+                                    </RowDefinition>
+                                    <RowDefinition Height="0.6*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0"  >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="0.6*"></RowDefinition>
+                                        <RowDefinition Height="0.4*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+
+                                    <Grid  Grid.Row="0" Margin="0,0,0,3" >
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="0.2*"></RowDefinition>
+                                            <RowDefinition Height="0.4*"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <TextBox x:Name="camera2_name"  Grid.Row="0" KeyDown="camera2_name_KeyDown"></TextBox>
+                                        <CheckBox x:Name="camera2_Open" Grid.Row="1" Style="{StaticResource Camera_toggsty}"></CheckBox>
+
+                                    </Grid>
+                                    <Grid Grid.Row="1">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                            <ColumnDefinition Width="0.1*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                    </Grid>
+                                </Grid>
+
+                                <Grid   Grid.Row="1" >
+                                    <Grid.RowDefinitions>
+
+                                        <RowDefinition Height="0.3*"></RowDefinition>
+                                        <RowDefinition Height="0.3*"></RowDefinition>
+                                        <RowDefinition Height="0.3*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                        <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                        <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                        <ColumnDefinition Width="0.1*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+
+
+                                    <TextBlock Grid.Row="0" Text="{Binding cameraTemperatu}" Grid.Column="0" VerticalAlignment="Center">相机温度:</TextBlock>
+                                    <TextBlock VerticalAlignment="Center" Height="20" x:Name="camer_lit_tempret" Grid.Row="0" Text="{Binding cameraTemperatu}" Grid.Column="1"  ></TextBlock>
+                                </Grid>
+
+                            </Grid>
+                        </GroupBox>
+                        <GroupBox   x:Name="GroupBox_carmer3" Header="红外相机/&#xe758;"   >
+                            <Grid x:Name="GRdcarmer3">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="0.4*">
+
+                                    </RowDefinition>
+                                    <RowDefinition Height="0.6*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0"  >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="0.6*"></RowDefinition>
+                                        <RowDefinition Height="0.4*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+
+                                    <Grid Grid.Row="0" >
+
+
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="0.2*"></RowDefinition>
+                                            <RowDefinition Height="0.4*"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <TextBox x:Name="camera3_name" Grid.Row="0"></TextBox>
+                                        <CheckBox x:Name="camera3_Open" Grid.Row="1" Style="{StaticResource Camera_toggsty}"></CheckBox>
+
+
+                                    </Grid>
+                                    <Grid Grid.Row="1">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                            <ColumnDefinition Width="0.1*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+
+                                    
+                                    </Grid>
+                                </Grid>
+
+                                <Grid  Grid.Row="1">
+                                    <Grid.RowDefinitions>
+
+                                        <RowDefinition Height="0.3*"></RowDefinition>
+                                        <RowDefinition Height="0.3*"></RowDefinition>
+                                        <RowDefinition Height="0.3*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                        <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                        <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                        <ColumnDefinition Width="0.1*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+
+
+                               
+                                   
+
+                                </Grid>
+
+                            </Grid>
+                        </GroupBox>
+
+                        <GroupBox    x:Name="GroupBox_carmer4" Header="融合控制/&#xe758;"  >
+                            <Grid x:Name="Grd_carmer4">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="0.4*">
+
+                                    </RowDefinition>
+                                    <RowDefinition Height="0.6*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Canvas Grid.Row="0"  Margin="0,0,0,3" >
+
+
+
+
+
+                                                                </Canvas>
+
+                                <Grid Grid.Row="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="0.3*"></RowDefinition>
+                                        <RowDefinition Height="0.3*"></RowDefinition>
+                                        <RowDefinition Height="0.3*"></RowDefinition>
+                                        <RowDefinition Height="0.3*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                        <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                        <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                        <ColumnDefinition Width="0.1*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+
+                               
+                                </Grid>
+
+                            </Grid>
+                        </GroupBox>
+
+
+                    </StackPanel>
+                </ScrollViewer>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

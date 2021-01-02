@@ -1,0 +1,80 @@
+﻿<Page x:Class="SimulCommSys.Car_motion"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SimulCommSys"
+      xmlns:Xceed="http://schemas.xceed.com/wpf/xaml/toolkit"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="500"
+      Title="Car_motion">
+
+    <Grid>
+        <!--<Border Grid.Column="1" VerticalAlignment="Bottom" Height="60" Margin="3,3,3,3" BorderBrush="#FF997474" BorderThickness="5">
+            <Grid x:Name="Gridinfrared" Background="#FF262020" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.25*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.25*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.25*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.25*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.5*"></RowDefinition>
+                    <RowDefinition Height="0.5*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <CheckBox x:Name="infrared_1" HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Column="0" Content="红外1" Style="{StaticResource toggstyle3_outtxt}" Foreground="#FFEB1D1D" Click="infrared_1_Click" />
+                <Xceed:SingleUpDown x:Name="infrared_1_Txt" Value="{Binding temper,Mode=TwoWay}" Maximum="{Binding maxtemper}" Minimum="{Binding mintemper}" Increment="{Binding increment}"  Grid.Column="0" Grid.Row="1"/>
+                <Xceed:SingleUpDown x:Name="infrared_2_Txt" Value="{Binding temper,Mode=TwoWay}" Maximum="{Binding maxtemper}" Minimum="{Binding mintemper}" Increment="{Binding increment}" Grid.Column="1" Grid.Row="1"/>
+                <Xceed:SingleUpDown x:Name="infrared_3_Txt" Value="{Binding temper,Mode=TwoWay}" Maximum="{Binding maxtemper}" Minimum="{Binding mintemper}" Increment="{Binding increment}" Grid.Column="2" Grid.Row="1"/>
+                <Xceed:SingleUpDown x:Name="infrared_4_Txt" Value="{Binding temper,Mode=TwoWay}" Maximum="{Binding maxtemper}" Minimum="{Binding mintemper}" Increment="{Binding increment}" Grid.Column="3" Grid.Row="1"/>
+                <CheckBox x:Name="infrared_2" HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Column="1" Content="红外2" Style="{StaticResource toggstyle3_outtxt}" Foreground="#FFEB1D1D" Click="infrared_2_Click"/>
+                <CheckBox x:Name="infrared_3" HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Column="2" Content="红外3" Style="{StaticResource toggstyle3_outtxt}" Foreground="#FFEB1D1D" Click="infrared_3_Click"/>
+                <CheckBox x:Name="infrared_4" HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Column="3" Content="红外4" Style="{StaticResource  toggstyle3_outtxt}" Foreground="#FFEB1D1D" Click="infrared_4_Click"/>
+            </Grid>
+        </Border>-->
+        <Border Grid.Column="1" Margin="3,5,3,65" >
+
+            <!--<Canvas x:Name="Canvas_model"   Background="#FFD4CACA">-->
+            <Canvas x:Name="Canvas_model"   Background="{StaticResource backg_huibai}">
+                <Path  x:Name="Rout_path" Canvas.Top="40" Data="M1.5,31.5 C1.5,14.931458 14.931458,1.5 31.5,1.5 L368.5,1.5 C385.06854,1.5 398.5,14.931458 398.5,31.5 L398.5,568.5 C398.5,585.06854 385.06854,598.5 368.5,598.5 L31.5,598.5 C14.931458,598.5 1.5,585.06854 1.5,568.5 z" Fill="#FF5D4848" Height="600" Canvas.Left="40" Stretch="Fill" Stroke="Black" StrokeThickness="3"  Width="400" Panel.ZIndex="1"/>
+                <Border BorderBrush="#FF80DD3C" BorderThickness="5" Canvas.Top="67"  Canvas.Left="79"  Panel.ZIndex="3" Height="542" Width="319">
+                    <Image Source="/SimulCommSys;component/Resources/Back_car.png" HorizontalAlignment="Stretch" >
+
+                    </Image>
+                </Border>
+
+                <TextBox x:Name="textBox"  Text="可见光" TextAlignment="Center" FontSize="15" Width="60" Height="30" Panel.ZIndex="3" Canvas.Left="208" Canvas.Top="25" Style="{DynamicResource Txt_car}" Background="#FFF0E551" Padding="0,3,0,0" RenderTransformOrigin="0.5,0.5" MouseDoubleClick="textBox_MouseDoubleClick">
+                    <TextBox.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBox.RenderTransform>
+                </TextBox>
+                <TextBox x:Name="textBox1" Text="微光" Width="60" TextAlignment="Center" FontSize="15" Height="30" Panel.ZIndex="3" Canvas.Left="79"  Style="{DynamicResource Txt_car}" Background="#FF73D474" Canvas.Top="625" Padding="0,3,0,0">
+                    <TextBox.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBox.RenderTransform>
+                </TextBox>
+                <TextBox x:Name="textBox2" Text="红外" TextAlignment="Center" FontSize="15" Width="60" Height="30" Panel.ZIndex="3" Canvas.Left="338" Style="{DynamicResource Txt_car}" Background="#FFD94C41"  Canvas.Top="625" Padding="0,3,0,0">
+                    <TextBox.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBox.RenderTransform>
+                </TextBox>
+
+            </Canvas>
+        </Border>
+    </Grid>
+</Page>

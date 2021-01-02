@@ -1,0 +1,108 @@
+﻿<Window x:Name="window" x:Class="SimulCommSys.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SimulCommSys" xmlns:tool="clr-namespace:SimulCommSys.Tool"
+        xmlns:Xceed="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:X2="http://firstfloorsoftware.com/ModernUI"
+        xmlns:x3="clr-namespace:FirstFloor.ModernUI;assembly=FirstFloor.ModernUI"
+        xmlns:x4="clr-namespace:Xceed.Wpf.Toolkit.Media.Animation;assembly=Xceed.Wpf.Toolkit"
+        xmlns:x5="clr-namespace:Xceed.Wpf.Toolkit.Obselete;assembly=Xceed.Wpf.Toolkit"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+        mc:Ignorable="d"
+        Title="沙盘控制模拟系统" WindowStyle="None" Height="1000" Width="2050" BorderBrush="Black" BorderThickness="5" WindowStartupLocation="CenterScreen" WindowState="Maximized" Icon="Resources/Su-27KI Flanker.ico">
+    <Window.Resources>
+       
+    </Window.Resources>
+
+    <DockPanel>
+        <Border DockPanel.Dock="Top" Height="50" Background="{DynamicResource Button.Disabled.Background}" MouseMove="Border_MouseMove">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.9*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.03*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.03*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.03*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Image HorizontalAlignment="Left" Source="Resources/Su-27KI Flanker.ico"/>
+                <TextBlock Margin="60,0,0,0" Grid.Column="0" FontSize="30" FontWeight="Bold" Text="沙盘控制模拟系统" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left" Height="40" Foreground="#FF1C7C43" RenderTransformOrigin="0.5,0.5" FontStyle="Italic" FontFamily="iconfont"  />
+                <Button  FontSize="30" Grid.Column="1" Content="&#xe6c6;" Style="{StaticResource Model_BT_Close}" Background="{x:Null}" BorderBrush="{x:Null}" BorderThickness="0"  Foreground="#FFE0D8D8" Click="Button_Click_1" />
+                <Button  x:Name="max_bt" FontSize="30"  Grid.Column="2" Content="&#xe6bb;" Style="{StaticResource Model_BT_Max}" Background="{x:Null}" BorderBrush="{x:Null}" BorderThickness="0"  Foreground="#FFE0D8D8" Click="Button_Click_2" />
+                <Button  FontSize="30"  Grid.Column="3" Content="&#xe633;" Style="{StaticResource Model_BT_Close}" Background="{x:Null}" BorderBrush="{x:Null}" BorderThickness="0" Click="Button_Click" Foreground="#FFE0D8D8" />
+            </Grid>
+        </Border>
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.98*"></RowDefinition>
+                <RowDefinition Height="280"></RowDefinition>
+               
+                <RowDefinition Height="20"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+               
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="500"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+
+            <ComboBox   Grid.Column="0" Grid.Row="1" Height="30"   VerticalAlignment="Bottom" Width="200" >
+
+                <ComboBoxItem x:Name="Grop_ContralPram"  HorizontalAlignment="Center"  >
+
+                <Frame x:Name="Frame_chosepage"  NavigationUIVisibility="Hidden"   ></Frame>
+                </ComboBoxItem>
+            </ComboBox>
+
+
+            <Border x:Name="border_camera" Margin="3,10,3,3" Grid.Row="0"  CornerRadius="10"  BorderBrush="Black" BorderThickness="8">
+                <Grid   >
+                 
+                        <Grid>
+                            <Frame x:Name="Frame_"  NavigationUIVisibility="Hidden"   ></Frame>
+                        </Grid>
+                       
+
+                    
+                </Grid>
+            </Border>
+
+
+            <Border x:Name="Bord_motion" Grid.Row="0" Grid.Column="1"   CornerRadius="10" Margin="3,10,3,3"   BorderBrush="Black" BorderThickness="8">
+                
+                <Frame x:Name="Fram_carmotion"></Frame>
+              
+            </Border>
+            <Border x:Name="Bord_iniParm" Grid.Row="1" Grid.Column="1"   CornerRadius="10" Margin="1,1,1,1"   BorderBrush="Black" BorderThickness="8">
+
+                <Frame x:Name="Fram_iniParm"></Frame>
+
+            </Border>
+            <Border x:Name="Bord_msg"  Grid.Row="2" Grid.ColumnSpan="2" BorderBrush="#FFD8C2C2" BorderThickness="3">
+
+                <TextBlock x:Name="Msg" Text="{Binding msg}">
+                    <TextBlock.Style>
+                        <Style x:Name="Msg_sty"  TargetType="{x:Type TextBlock}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding flag}" Value="0">
+                                    <!--<Setter Property="Background" Value="Red" ></Setter>-->
+                                    <Setter Property="Foreground" Value="Red"></Setter>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding flag}" Value="1">
+                                    <!--<Setter Property="Background" Value="#FFF5F5F5"></Setter>-->
+                                    <Setter Property="Foreground" Value="Black"></Setter>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding flag}" Value="2">
+                                    <!--<Setter Property="Background" Value="Yellow"></Setter>-->
+                                    <Setter Property="Foreground" Value="Yellow"></Setter>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+            </Border>
+        </Grid>
+
+    </DockPanel>
+
+</Window>
